@@ -39,7 +39,5 @@ const firmSchema = new mongoose.Schema({
         }
     ]
 })
-
 const Firm = mongoose.model('Firm', firmSchema);
-
 module.exports = Firm
