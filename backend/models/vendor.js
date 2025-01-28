@@ -1,20 +1,20 @@
 const mongoose = require('mongoose');
 
 const vendorSchema = new mongoose.Schema({
-    username:{
+    username: {
         type: String,
         required: true
     },
-    email:{
+    email: {
         type: String,
         required: true,
         unique: true
     },
-    password:{
+    password: {
         type: String,
         required: true
     },
-    firm:[
+    firm: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Firm'
