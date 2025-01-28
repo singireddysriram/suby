@@ -22,6 +22,8 @@ const vendorSchema = new mongoose.Schema({
     ]
 
 });
+// Delete the existing model to prevent OverwriteModelError
+delete mongoose.models['Vendor'];
 
 const Vendor = mongoose.model('Vendor', vendorSchema);
 module.exports = Vendor;
