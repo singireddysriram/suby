@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Product = require('./Product');
 
 const firmSchema = new mongoose.Schema({
     firmName: {
@@ -36,7 +37,11 @@ const firmSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Vendor'
     }
-    ]
+    ],
+    product: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref:'Product'
+        }]
 });
 const Firm = mongoose.model('Firm', firmSchema);
 module.exports = Firm

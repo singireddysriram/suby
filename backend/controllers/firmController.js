@@ -7,7 +7,7 @@ const storage = multer.diskStorage({
         cb(null, 'uploads/');
     },
     filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + file.originalname);
+        cb(null, Date.now() + Path.extname(file.originalname));
     }
 });
 const upload = multer({ storage: storage });
@@ -36,7 +36,8 @@ const addFirm = async (req, res) => {
 
         return res.status(200).json({ message: 'Firm Added successfully ' })
 
-    } catch (error) {
+   
+ } catch (error) {
         console.error(error)
         res.status(500).json("internal server error")
     }
