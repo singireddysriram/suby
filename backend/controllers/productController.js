@@ -31,6 +31,7 @@ const addProduct = async (req, res) => {
         })
 
         const savedProduct = await product.save();
+        firm.product.push(savedProduct);
 
         await firm.save()
         res.status(200).json(savedProduct)
@@ -41,5 +42,25 @@ const addProduct = async (req, res) => {
     }
 }
 
-module.exports = { addProduct: [upload.single('image'), addProduct] };
+const getProductByFirm = async(req, res) => {
+    try{
+        const firmId = req.params.findById;
+        const firm = await Firm.findById(firmId);
+
+        if(!firm){
+            return res.status(404).json({error: "No firm found"});
+        }
+
+        const products = await Product.find({firm: firmId});
+
+        res.status(200).json(products);
+
+
+    } catch (error) {
+        console.error(error)
+        res.status(500).json("internal server error")
+
+    }
+}
+module.exports = { addProduct: [upload.single('image'), addProduct], getProductByFirm };
 
