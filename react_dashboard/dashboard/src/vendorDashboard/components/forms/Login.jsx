@@ -23,6 +23,16 @@ const Login = ({showWelcomeHandler}) => {
             localStorage.setItem('loginToken', data.token)
             showWelcomeHandler()
         }
+        const vendorId = data.vendorId
+        console.log("checking for VendorId:", vendorId)
+        const vendorResponse = await fetch(`${API_URL}/vendor/single-vendor/${vendorId}`)
+        const vendorData = await vendorResponse.json();
+        if(vendorResponse.ok){233
+            const vendorFirmId = vendorData.vendorFirmId;
+            console.log("checking for firmID", vendorFirmId);
+            localStorage.setItem(`firmId`, vendorFirmId)
+        }
+
     } catch (error) {
             console.error(error);
     }
