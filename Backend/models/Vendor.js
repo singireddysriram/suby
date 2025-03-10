@@ -9,7 +9,7 @@ const vendorSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
-    },
+    }, 
     password: {
         type: String,
         required: true
@@ -17,7 +17,7 @@ const vendorSchema = new mongoose.Schema({
     firm: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Firm'
+            ref: 'Firm' 
         }
     ]
 
