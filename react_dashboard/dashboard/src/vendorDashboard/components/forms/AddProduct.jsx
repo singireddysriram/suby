@@ -5,7 +5,7 @@ const AddProduct = () => {
     const [productName, setProductName] = useState("");
     const [price, setPrice] = useState("");
     const [category, setCategory] = useState([]);
-    const [bestseller, setBestSeller] = useState(false);
+    const [bestSeller, setBestSeller] = useState(false);
     const [image, setImage] = useState(null);
     const [description, setDescription] = useState("");
 
@@ -57,7 +57,14 @@ const AddProduct = () => {
              if(response.ok){
                 alert('Product added succesfully')
              }
+             setProductName("")
+             setPrice("");
+             setCategory([])
+             setBestSeller(false);
+             setImage(null);
+             setDescription("")
         } catch (error){
+            console.error(data.message);
             alert('Failed to add Product')
         }
     }
@@ -79,7 +86,7 @@ const AddProduct = () => {
                         </div>
                         <div className="checkboxContainer">
                             <label>Non-Veg</label>
-                            <input type="checkbox" value="non-veg" checked={category.includes('non-veg')}/>
+                            <input type="checkbox" value="non-veg" checked={category.includes('non-veg')}  onChange={handleCategoryChange}/>
                         </div>
                     </div>
                 </div>
@@ -88,11 +95,11 @@ const AddProduct = () => {
                     <div className="inputsContainer">
                         <div className="checkboxContainer">
                             <label>Yes</label>
-                            <input type="radio" value="true" checked = {bestseller === true} onChange={handleBestSeller}/>
+                            <input type="radio" value="true" checked = {bestSeller === true} onChange={handleBestSeller}/>
                         </div>
                         <div className="checkboxContainer">
                             <label>No</label>
-                            <input type="radio" value="false" checked = {bestseller === false} onChange={handleBestSeller}/>
+                            <input type="radio" value="false" checked = {bestSeller === false} onChange={handleBestSeller}/>
                         </div>
                     </div>
                 </div>

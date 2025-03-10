@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Product = require('./Product');
 
 const firmSchema = new mongoose.Schema({
     firmName: {
@@ -38,7 +37,7 @@ const firmSchema = new mongoose.Schema({
         ref: 'Vendor'
     }
     ],
-    product: [{
+    Product: [{
             type: mongoose.Schema.Types.ObjectId,
             ref:'Product'
         }]

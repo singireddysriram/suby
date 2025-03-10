@@ -27,4 +27,3 @@ delete mongoose.models['Vendor'];
 
 const Vendor = mongoose.model('Vendor', vendorSchema);
 module.exports = Vendor;
-

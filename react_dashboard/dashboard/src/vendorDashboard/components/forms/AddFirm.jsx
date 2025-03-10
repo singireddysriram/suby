@@ -79,7 +79,7 @@ const AddFirm = () => {
             }
             console.log("this is firmId",data.firmId);
             const mango = data.firmId;
-
+  
             localStorage.setItem('firmId', mango)
         } catch (error) {
             console.error("failed to add Firm")
